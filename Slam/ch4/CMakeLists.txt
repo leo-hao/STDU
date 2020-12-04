@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.17)
+project(ch4)
+
+set(CMAKE_CXX_STANDARD 14)
+
+find_package(Sophus REQUIRED)
+find_package(Pangolin REQUIRED)
+include_directories(${Pangolin_INCLUDE_DIRS})
+include_directories(${Sophus_INCLUDE_DIRS})
+add_executable(trajectoryError trajectoryError.cpp)
+include_directories("/usr/local/include/eigen3")
+add_executable(ch4  useSophus.cpp)
+target_link_libraries(ch4 Sophus::Sophus)
+target_link_libraries(trajectoryError ${Pangolin_LIBRARIES})
+target_link_libraries(trajectoryError Sophus::Sophus)
